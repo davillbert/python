@@ -1,7 +1,7 @@
 realA = [
-    [3, -6, 9, 13],
-    [-1, 2, 1, 1],
-    [1, -2, 2, 3]
+    [7, 5, 7, 5],
+    [4, 1, 4, 1],
+   # [1, -2, 2, 3]
 ]
 
 
@@ -109,13 +109,14 @@ for r in range(len(A)):
 rg = len(A) - x
 
 q = 0
-
+u = 0
 for i in range(len(A[0])):
     for j in range(len(A)):
         if (A[j][i] == 1):
             q = q + 1
     # print(q)
-    if (q == 1):
+    u = u + 1
+    if (q == 1) and (u < rg + 1):
         solutions[i] = 1
     else:
         solutions[i] = 0
@@ -166,11 +167,11 @@ for i in range(len(A[0])):
         print("x", i + 1, "=", newB[i])
 
 
-print("================MNOZHESTVO ZNACHENII{Im}================")
+print("================{Im}================")
 
 for i in range(len(A[0])):
     if(solutions[i]==1):
-        print("stl", i)
+        print("stl", i+1)
         for r in range(len(A)):
             print(realA[r][i])
         print(" ")
