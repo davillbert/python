@@ -1,4 +1,3 @@
-
 def umnozhit(Matrix, Free, str, number, n):
     for j in range(n):
         if (Matrix[str][j] == int(Matrix[str][j])):
@@ -239,6 +238,7 @@ dimL1L2 = rg + rg2 - rg3
 print("=================dim L1 || L2=================")
 print(dimL1L2)
 print("=================bazis L1 || L2=================")
+
 if dimL1L2 == rg:
     for i in range(rg):
         print(A[i])
@@ -252,13 +252,41 @@ elif dimL1L2 == 0:
 
 else:    
     D = []
+    
+    s = [0] * len(A)
+    k = 0
+    x = 0
+    for r in range(len(realA)):
+        for l in range(len(realA[r])):
+            if realA[r][l] == 0:
+                k = k + 1
+    # print(k)
+        if k == len(realA[0]):
+        # print(k)
+            s[r] = 1
+        k = 0
 
-    for i in range(rg):
-        D.append(A[i])
+    for i in range(len(A)):
+        if s[i] == 0:
+            D.append(A[i])
   
-    for i in range(rg2):
-        D.append(B[i])        
-        
+    t = [0] * len(B)
+    k = 0
+    x = 0
+    
+    for r in range(len(realB)):
+        for l in range(len(realB[r])):
+            if realB[r][l] == 0:
+                k = k + 1
+    # print(k)
+        if k == len(realB[0]):
+        # print(k)
+            t[r] = 1
+        k = 0
 
+    for i in range(len(A)):
+        if t[i] == 0:
+            D.append(A[i])
+    
     for i in range(dimL1L2):
         print(D[i])    
