@@ -1,7 +1,19 @@
 import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
 %matplotlib inline
-#f = open('/home/davillbert/Documents/ded/signals/signal01.dat')
-#data = np.array(f) 
+f = open('/home/davillbert/Documents/ded/signals/signal01.dat', 'r')
+nums = []
+f.readline()
+for line in f:
+        nums.append(line.split())
+chiselki = []
+for i in nums:
+    chiselki.append(i[0])
+x = []
+for i in range(len(chiselki)):
+    x.append(i)
+y1 = [float(j) for j in chiselki]
+
 def p(a, num):
     s = 0
     k = 0
@@ -10,28 +22,20 @@ def p(a, num):
             s = s + i
             k = k + 1
     return s
-        
-        
-data = np.genfromtxt('/home/davillbert/Documents/ded/signals/signal01.dat')
-#p = int(data[0])
-data2 = np.fromfunction(lambda i: (p(data2,i) + data[i])/(i+1), (data.size,), dtype = int)
-#data2 = np.array()
-#data2[0] = int(data[0])
-#for i in range(1, data.size):
-   # data2.append((p + int(data[i]))/(i+1))
-   # p = p + int(data2[i])
-   # print(data2[i])
+y2 = []
+y2.append(y1[0])
+for i in range(len(y1)):
+    y2.append((p(y2,i) + y1[i])/(i+1))
+del y2[0]
 
-"""
-fg = plt.figure(figsize=(14, 7))
-gs = gridspec.GridSpec(ncols=1, nrows=1, figure=fg)
+fg = plt.figure(figsize=(10, 7))
+gs = gridspec.GridSpec(ncols=2, nrows=1, figure=fg)
 
 fig_ax_1 = fg.add_subplot(gs[0, 0])
-plt.plot(x, y1, label='linear', marker='o', linestyle=' ', color='blue', linewidth=2)
+plt.plot(x, y1, label='linear', marker='', linestyle='-', color='blue', linewidth=1)
 plt.legend()
+fig_ax_2 = fg.add_subplot(gs[0, 1])
+plt.plot(x, y2)
 
 
 plt.show()
-"""
-print(data)
-print(data2)
